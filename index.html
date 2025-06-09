@@ -816,4 +816,84 @@
             </div>
 
             <!-- English Education -->
-            <div class="
+            <div class="lang-content" id="education-en">
+    <h2>Education</h2>
+    <div class="education-item">
+        <h3>Bachelor’s Degree – Graphic Design</h3>
+        <div class="university">University in Poland</div>
+        <div class="year">2023 – Present</div>
+        <p>Comprehensive studies including design theory, typography, composition, multimedia projects, and modern graphic tools.</p>
+    </div>
+    <div class="education-item">
+        <h3>Online Courses</h3>
+        <div class="university">Various Educational Platforms</div>
+        <div class="year">2022 – Present</div>
+        <p>Additional training in Adobe Creative Suite, UX/UI design, digital photography, and visual marketing.</p>
+    </div>
+</div>
+            <!-- Ukrainian Education -->
+<div class="lang-content" id="education-ua">
+    <h2>Освіта</h2>
+    <div class="education-item">
+        <h3>Бакалавр – Графічний дизайн</h3>
+        <div class="university">Університет у Польщі</div>
+        <div class="year">2023 – дотепер</div>
+        <p>Комплексне навчання, що охоплює теорію дизайну, типографіку, композицію, мультимедійні проєкти та сучасні графічні інструменти.</p>
+    </div>
+    <div class="education-item">
+        <h3>Онлайн-курси</h3>
+        <div class="university">Різні освітні платформи</div>
+        <div class="year">2022 – дотепер</div>
+        <p>Додаткове навчання Adobe Creative Suite, UX/UI-дизайну, цифрової фотографії та візуального маркетингу.</p>
+    </div>
+</div>
+
+            </section>
+
+<!-- Footer -->
+<footer>
+    <div class="social-links">
+        <a href="#"><i class="fab fa-behance"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 Twoje Imię. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+</div> <!-- end .container -->
+
+<!-- Language Switch Script -->
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+
+        document.querySelectorAll('.lang-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        document.querySelectorAll(`[id$="-${lang}"]`).forEach(el => {
+            el.classList.add('active');
+        });
+    }
+
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+</body>
+</html>
