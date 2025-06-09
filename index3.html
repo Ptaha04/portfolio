@@ -1,0 +1,47 @@
+<!-- index.html — Головна сторінка "Про мене" -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sofiia Vorona – Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/language.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-i18n="menu_about">O mnie</a></li>
+        <li><a href="portfolio.html" data-i18n="menu_portfolio">Portfolio</a></li>
+        <li><a href="experience.html" data-i18n="menu_experience">Doświadczenie</a></li>
+        <li><a href="education.html" data-i18n="menu_education">Edukacja</a></li>
+        <li><a href="contact.html" data-i18n="menu_contact">Kontakt</a></li>
+      </ul>
+      <label for="langSwitcher">Wybierz język:</label>
+      <select id="langSwitcher">
+        <option value="pl">PL</option>
+        <option value="en">EN</option>
+        <option value="ua">UA</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 data-i18n="welcome">Witaj na moim portfolio!</h1>
+      <p data-i18n="intro">Jestem Sofiia Vorona, studentka grafiki na Collegium Da Vinci. Specjalizuję się w ilustracjach, animacji i projektowaniu graficznym.</p>
+    </section>
+    <section class="about">
+      <h2 data-i18n="bio_title">Kim jestem?</h2>
+      <p data-i18n="bio_text_1">Jestem studentką 3. roku grafiki i tworzę nowoczesne projekty w takich programach jak Figma, Photoshop, Illustrator, InDesign czy Lightroom.</p>
+      <p data-i18n="bio_text_2">Łączę klasyczne techniki malarskie, takie jak malarstwo olejne i szkice ołówkiem, z cyfrowym designem. Tworzę identyfikacje wizualne, ilustracje i animacje.</p>
+      <p data-i18n="bio_text_3">Pasjonuję się fotografią artystyczną i brandingiem. Dbam o estetykę i detale w każdym projekcie, który realizuję z myślą o potrzebach klienta.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sofiia Vorona | <span data-i18n="footer_rights">Wszystkie prawa zastrzeżone</span></p>
+  </footer>
+</body>
+</html>
