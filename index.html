@@ -9,128 +9,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <a href="#" class="logo" onclick="showPage('home')">
-                <i class="fas fa-palette"></i>
-                <span class="lang-content active" id="logo-pl">Sophiia Vorona</span>
-                <span class="lang-content" id="logo-en">Sophiia Vorona</span>
-                <span class="lang-content" id="logo-ua">Софія Ворона</span>
-            </a>
-
-            <nav>
-                <ul class="main-nav" id="mainNav">
-                    <li class="lang-content active" id="nav-home-pl">
-                        <a href="#" onclick="showPage('home')" class="active">
-                            <i class="fas fa-home"></i> Główna
-                        </a>
-                    </li>
-                    <li class="lang-content active" id="nav-about-pl">
-                        <a href="#" onclick="showPage('about')">
-                            <i class="fas fa-user"></i> O mnie
-                        </a>
-                    </li>
-                    <li class="lang-content active" id="nav-portfolio-pl">
-                        <a href="portfolio.html" onclick="showPage('portfolio')">
-                            <i class="fas fa-briefcase"></i> Portfolio
-                        </a>
-                    </li>
-                    <li class="lang-content active" id="nav-skills-pl">
-                        <a href="#" onclick="showPage('skills')">
-                            <i class="fas fa-tools"></i> Umiejętności
-                        </a>
-                    </li>
-                    <li class="lang-content active" id="nav-education-pl">
-                        <a href="education.html" onclick="showPage('education')">
-                            <i class="fas fa-graduation-cap"></i> Edukacja
-                        </a>
-                    </li>
-                    <li class="lang-content active" id="nav-contact-pl">
-                        <a href="#" onclick="showPage('contact')">
-                            <i class="fas fa-envelope"></i> Kontakt
-                        </a>
-                    </li>
-
-                    <!-- English Navigation -->
-                    <li class="lang-content" id="nav-home-en">
-                        <a href="#" onclick="showPage('home')" class="active">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-about-en">
-                        <a href="#" onclick="showPage('about')">
-                            <i class="fas fa-user"></i> About
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-portfolio-en">
-                        <a href="portfolio.html" onclick="showPage('portfolio')">
-                            <i class="fas fa-briefcase"></i> Portfolio
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-skills-en">
-                        <a href="#" onclick="showPage('skills')">
-                            <i class="fas fa-tools"></i> Skills
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-education-en">
-                        <a href="#" onclick="showPage('education')">
-                            <i class="fas fa-graduation-cap"></i> Education
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-contact-en">
-                        <a href="#" onclick="showPage('contact')">
-                            <i class="fas fa-envelope"></i> Contact
-                        </a>
-                    </li>
-
-                    <!-- Ukrainian Navigation -->
-                    <li class="lang-content" id="nav-home-ua">
-                        <a href="#" onclick="showPage('home')" class="active">
-                            <i class="fas fa-home"></i> Головна
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-about-ua">
-                        <a href="#" onclick="showPage('about')">
-                            <i class="fas fa-user"></i> Про мене
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-portfolio-ua">
-                        <a href="#" onclick="showPage('portfolio')">
-                            <i class="fas fa-briefcase"></i> Портфоліо
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-skills-ua">
-                        <a href="#" onclick="showPage('skills')">
-                            <i class="fas fa-tools"></i> Навички
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-education-ua">
-                        <a href="#" onclick="showPage('education')">
-                            <i class="fas fa-graduation-cap"></i> Освіта
-                        </a>
-                    </li>
-                    <li class="lang-content" id="nav-contact-ua">
-                        <a href="#" onclick="showPage('contact')">
-                            <i class="fas fa-envelope"></i> Контакт
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="header-right">
-                <div class="language-switcher">
-                    <button class="lang-btn active" onclick="switchLanguage('pl')">PL</button>
-                    <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
-                    <button class="lang-btn" onclick="switchLanguage('ua')">UA</button>
-                </div>
-                <div class="hamburger" onclick="toggleMobileNav()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div id="header"></div>
 
     <div class="container">
         <!-- Home Page -->
@@ -547,29 +426,13 @@
     </div>
 
     <!-- Footer -->
-    <footer class="main-footer">
-        <div class="social-links">
-            <a href="#" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" aria-label="Behance">
-                <i class="fab fa-behance"></i>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" aria-label="Dribbble">
-                <i class="fab fa-dribbble"></i>
-            </a>
-        </div>
-        <p>&copy; 2024 Sophiia Vorona. 
-            <span class="lang-content active">Wszelkie prawa zastrzeżone.</span>
-            <span class="lang-content">All rights reserved.</span>
-            <span class="lang-content">Всі права захищені.</span>
-        </p>
-    </footer>
+   <div id="footer"></div>
 
     <script>
+         <script src="js/lang.js"></script>
+         <script src="js/load-header.js"></script>
+         <script src="js/load-footer.js"></script>
+        
         // Current language
         let currentLang = 'pl';
         
