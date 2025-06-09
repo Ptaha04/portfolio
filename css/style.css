@@ -1,16 +1,39 @@
+
 body {
-  font-family: 'Inter', sans-serif;
-  background: #fff;
-  color: #1e1e1e;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: #fefefe;
+  color: #1e1e1e;
+}
+header, footer {
+  background: #fca5a5;
+  color: white;
+  padding: 1em;
+  text-align: center;
 }
 nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1em;
 }
-nav select {
-  margin-left: auto;
+nav a {
+  color: white;
+  text-decoration: none;
+}
+main {
+  padding: 2em;
+}
+form input, form textarea {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+.carousel img, .carousel video {
+  max-width: 100%;
+  max-height: 400px;
+  margin: auto;
+  display: block;
 }

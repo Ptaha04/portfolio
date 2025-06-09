@@ -4,13 +4,10 @@
   "menu_experience": "Досвід",
   "menu_education": "Освіта",
   "menu_contact": "Контакти",
-  "portfolio_title": "Мої проєкти",
-  "experience_title": "Професійний досвід",
-  "education_title": "Освіта",
-  "contact_title": "Звʼязок зі мною",
-  "contact_form_title": "Форма зворотного звʼязку",
-  "form_name": "Імʼя:",
-  "form_email": "Email:",
+  "contact_title": "Зв’яжіться зі мною",
+  "contact_form_title": "Форма зв’язку",
+  "form_name": "Ім’я:",
+  "form_email": "Ел. пошта:",
   "form_message": "Повідомлення:",
   "form_send": "Надіслати"
 }
