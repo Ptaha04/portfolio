@@ -1,1 +1,675 @@
-<!DOCTYPE html><html lang='pl'><head><meta charset='UTF-8'><title>Portfolio</title><link rel='stylesheet' href='css/style.css'></head><body><nav><a href='index.html' data-i18n='nav_about'>O mnie</a><a href='portfolio.html' data-i18n='nav_portfolio'>Portfolio</a><a href='experience.html' data-i18n='nav_experience'>Doświadczenie</a><a href='education.html' data-i18n='nav_education'>Edukacja</a><a href='contact.html' data-i18n='nav_contact'>Kontakt</a><select id='languageSwitcher'><option value='pl'>PL</option><option value='en'>EN</option><option value='ua'>UA</option></select><button class='theme-toggle'>🌓</button></nav><main><h1 data-i18n='portfolio_heading'>Portfolio</h1><p data-i18n='portfolio_intro'>Moje wybrane prace:</p></main><footer>© 2025</footer><script src='js/lang.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Sophiia Vorona</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            padding: 2rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .item-image {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item-image i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .item-image i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .item-content {
+            padding: 1.5rem;
+        }
+
+        .item-content h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .modal h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+                padding: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 1.5rem;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <div class="container">
+        <header class="header">
+            <h1>
+                <span class="lang-content active" id="title-pl">Portfolio</span>
+                <span class="lang-content" id="title-en">Portfolio</span>
+                <span class="lang-content" id="title-ua">Портфоліо</span>
+            </h1>
+            <p>
+                <span class="lang-content active" id="subtitle-pl">Kolekcja moich najlepszych projektów graficznych</span>
+                <span class="lang-content" id="subtitle-en">Collection of my best graphic design projects</span>
+                <span class="lang-content" id="subtitle-ua">Колекція моїх найкращих проектів графічного дизайну</span>
+            </p>
+
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('pl')">PL</button>
+                <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('ua')">UA</button>
+            </div>
+        </header>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterPortfolio('all')">
+                <span class="lang-content active">Wszystkie</span>
+                <span class="lang-content">All</span>
+                <span class="lang-content">Всі</span>
+            </button>
+            <button class="filter-btn" onclick="filterPortfolio('logo')">
+                <span class="lang-content active">Logo</span>
+                <span class="lang-content">Logo</span>
+                <span class="lang-content">Логотипи</span>
+            </button>
+            <button class="filter-btn" onclick="filterPortfolio('branding')">
+                <span class="lang-content active">Branding</span>
+                <span class="lang-content">Branding</span>
+                <span class="lang-content">Брендинг</span>
+            </button>
+            <button class="filter-btn" onclick="filterPortfolio('poster')">
+                <span class="lang-content active">Plakaty</span>
+                <span class="lang-content">Posters</span>
+                <span class="lang-content">Постери</span>
+            </button>
+            <button class="filter-btn" onclick="filterPortfolio('web')">
+                <span class="lang-content active">Web Design</span>
+                <span class="lang-content">Web Design</span>
+                <span class="lang-content">Веб-дизайн</span>
+            </button>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Logo Design Project 1 -->
+            <div class="portfolio-item" data-category="logo" onclick="openModal('modal1')">
+                <div class="item-image">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="item-content">
+                    <h3>
+                        <span class="lang-content active">EcoTech Solutions - Logo</span>
+                        <span class="lang-content">EcoTech Solutions - Logo</span>
+                        <span class="lang-content">EcoTech Solutions - Логотип</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content active">Nowoczesny logotyp dla firmy technologicznej specjalizującej się w rozwiązaniach ekologicznych.</span>
+                        <span class="lang-content">Modern logo for a technology company specializing in ecological solutions.</span>
+                        <span class="lang-content">Сучасний логотип для технологічної компанії, що спеціалізується на екологічних рішеннях.</span>
+                    </p>
+                    <div class="item-tags">
+                        <span class="tag">Adobe Illustrator</span>
+                        <span class="tag">Minimalism</span>
+                        <span class="tag">Eco-friendly</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Branding Project 1 -->
+            <div class="portfolio-item" data-category="branding" onclick="openModal('modal2')">
+                <div class="item-image">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="item-content">
+                    <h3>
+                        <span class="lang-content active">Kawiarnia "Aromat" - Identyfikacja</span>
+                        <span class="lang-content">Coffee Shop "Aromat" - Identity</span>
+                        <span class="lang-content">Кав'ярня "Aromat" - Ідентичність</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content active">Kompleksowa identyfikacja wizualna dla lokalnej kawiarni, obejmująca logo, menu i materiały reklamowe.</span>
+                        <span class="lang-content">Comprehensive visual identity for a local coffee shop, including logo, menu and promotional materials.</span>
+                        <span class="lang-content">Комплексна візуальна ідентичність для місцевої кав'ярні, включаючи логотип, меню та рекламні матеріали.</span>
+                    </p>
+                    <div class="item-tags">
+                        <span class="tag">Brand Identity</span>
+                        <span class="tag">Print Design</span>
+                        <span class="tag">Typography</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Poster Design Project 1 -->
+            <div class="portfolio-item" data-category="poster" onclick="openModal('modal3')">
+                <div class="item-image">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="item-content">
+                    <h3>
+                        <span class="lang-content active">Festiwal Muzyczny - Plakat</span>
+                        <span class="lang-content">Music Festival - Poster</span>
+                        <span class="lang-content">Музичний Фестиваль - Постер</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content active">Energetyczny plakat promujący letni festiwal muzyczny z dynamiczną kompozycją i żywymi kolorami.</span>
+                        <span class="lang-content">Energetic poster promoting summer music festival with dynamic composition and vibrant colors.</span>
+                        <span class="lang-content">Енергійний постер, що рекламує літній музичний фестиваль з динамічною композицією та яскравими кольорами.</span>
+                    </p>
+                    <div class="item-tags">
+                        <span class="tag">Adobe Photoshop</span>
+                        <span class="tag">Event Design</span>
+                        <span class="tag">Typography</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Design Project 1 -->
+            <div class="portfolio-item" data-category="web" onclick="openModal('modal4')">
+                <div class="item-image">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="item-content">
+                    <h3>
+                        <span class="lang-content active">Portfolio Fotografa - Strona</span>
+                        <span class="lang-content">Photographer Portfolio - Website</span>
+                        <span class="lang-content">Портфоліо Фотографа - Сайт</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content active">Elegancka strona internetowa prezentująca portfolio fotografa z naciskiem na minimalizm i czytelność.</span>
+                        <span class="lang-content">Elegant website showcasing photographer's portfolio with emphasis on minimalism and readability.</span>
+                        <span class="lang-content">Елегантний веб-сайт, що демонструє портфоліо фотографа з акцентом на мінімалізм та читабельність.</span>
+                    </p>
+                    <div class="item-tags">
+                        <span class="tag">UI/UX Design</span>
+                        <span class="tag">Responsive</span>
+                        <span class="tag">Minimalism</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Design Project 2 -->
+            <div class="portfolio-item" data-category="logo" onclick="openModal('modal5')">
+                <div class="item-image">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="item-content">
+                    <h3>
+                        <span class="lang-content active">GreenLife - Logo</span>
+                        <span class="lang-content">GreenLife - Logo</span>
+                        <span class="lang-content">GreenLife - Логотип</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content active">Organiczny logotyp dla marki produktów ekologicznych, łączący naturalne formy z nowoczesną typografią.</span>
+                        <span class="lang-content">Organic logo for eco-products brand, combining natural forms with modern typography.</span>
+                        <span class="lang-content">Органічний логотип для бренду екологічних продуктів, що поєднує природні форми з сучасною типографікою.</span>
+                    </p>
+                    <div class="item-tags">
+                        <span class="tag">Adobe Illustrator</span>
+                        <span class="tag">Organic Design</span>
+                        <span class="tag">Nature</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Branding Project 2 -->
+            <div class="portfolio-item" data-category="branding" onclick="openModal('modal6')">
+                <div class="item-image">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <div class="item-content">
+                    <h3>
+                        <span class="lang-content active">FitZone Gym - Branding</span>
+                        <span class="lang-content">FitZone Gym - Branding</span>
+                        <span class="lang-content">FitZone Gym - Брендинг</span>
+                    </h3>
+                    <p>
+                        <span class="lang-content active">Dynamiczny branding dla siłowni, wyrażający energię, siłę i determinację członków klubu fitness.</span>
+                        <span class="lang-content">Dynamic branding for a gym, expressing energy, strength and determination of fitness club members.</span>
+                        <span class="lang-content">Динамічний брендинг для спортзалу, що виражає енергію, силу та рішучість членів фітнес-клубу.</span>
+                    </p>
+                    <div class="item-tags">
+                        <span class="tag">Sports Branding</span>
+                        <span class="tag">Logo Design</span>
+                        <span class="tag">Athletic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>
+                <span class="lang-content active">EcoTech Solutions - Projekt Logo</span>
+                <span class="lang-content">EcoTech Solutions - Logo Project</span>
+                <span class="lang-content">EcoTech Solutions - Проект Логотипу</span>
+            </h2>
+            <p>
+                <span class="lang-content active">
+                    Ten projekt logosu został stworzony dla innowacyjnej firmy technologicznej specjalizującej się w rozwiązaniach ekologicznych. 
+                    Głównym wyzwaniem było połączenie nowoczesności technologii z naturalnymi elementami ekologicznymi.
+                    
+                    Logo składa się z geometrycznego symbolu reprezentującego technologię oraz organicznych elementów sugerujących naturę. 
+                    Zastosowana paleta kolorów - odcienie zieleni i niebieskiego - podkreśla ekologiczny charakter marki.
+                    
+                    Proces projektowania obejmował: badanie konkurencji, szkicowanie koncepcji, digitalizację w Adobe Illustrator, 
+                    testowanie w różnych skalach oraz przygotowanie wersji monochromatycznych i kolorowych.
+                </span>
+                <span class="lang-content">
+                    This logo project was created for an innovative technology company specializing in ecological solutions. 
+                    The main challenge was to combine modern technology with natural ecological elements.
+                    
+                    The logo consists of a geometric symbol representing technology and organic elements suggesting nature. 
+                    The applied color palette - shades of green and blue - emphasizes the ecological character of the brand.
+                    
+                    The design process included: competitor research, concept sketching, digitization in Adobe Illustrator, 
+                    testing at various scales, and preparing monochromatic and color versions.
+                </span>
+                <span class="lang-content">
+                    Цей проект логотипу був створений для інноваційної технологічної компанії, що спеціалізується на екологічних рішеннях. 
+                    Головним викликом було поєднання сучасності технологій з природними екологічними елементами.
+                    
+                    Логотип складається з геометричного символу, що представляє технології, та органічних елементів, що нагадують про природу. 
+                    Застосована колірна палітра - відтінки зеленого та блакитного - підкреслює екологічний характер бренду.
+                    
+                    Процес проектування включав: дослідження конкурентів, ескізування концепцій, цифровізацію в Adobe Illustrator, 
+                    тестування в різних масштабах та підготовку монохроматичних і кольорових версій.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>
+                <span class="lang-content active">Kawiarnia "Aromat" - Identyfikacja Wizualna</span>
+                <span class="lang-content">Coffee Shop "Aromat" - Visual Identity</span>
+                <span class="lang-content">Кав'ярня "Aromat" - Візуальна Ідентичність</span>
+            </h2>
+            <p>
+                <span class="lang-content active">
+                    Kompleksowy projekt identyfikacji wizualnej dla lokalnej kawiarni "Aromat" obejmował stworzenie spójnego systemu graficznego, 
+                    który oddaje unikalną atmosferę tego miejsca.
+                    
+                    Zakres prac: projektowanie logo, wybór typografii, opracowanie palety kolorów, projektowanie menu, 
+                    wizytówek, pieczęci, opakowań na wynos oraz materiałów reklamowych.
+                    
+                    Logo łączy w sobie klasyczną elegancję z nowoczesnym minimalizmem. Zastosowana typografia jest czytelna i przyjazna, 
+                    a paleta kolorów - ciepłe brązy i beże - nawiązuje do kawy i przytulnej atmosfery kawiarni.
+                </span>
+                <span class="lang-content">
+                    Comprehensive visual identity project for the local coffee shop "Aromat" included creating a coherent graphic system 
+                    that captures the unique atmosphere of this place.
+                    
+                    Scope of work: logo design, typography selection, color palette development, menu design, 
+                    business cards, stamps, takeaway packaging and promotional materials.
+                    
+                    The logo combines classic elegance with modern minimalism. The applied typography is readable and friendly, 
+                    and the color palette - warm browns and beiges - refers to coffee and the cozy atmosphere of the cafe.
+                </span>
+                <span class="lang-content">
+                    Комплексний проект візуальної ідентичності для місцевої кав'ярні "Aromat" включав створення цілісної графічної системи, 
+                    яка передає унікальну атмосферу цього місця.
+                    
+                    Обсяг робіт: дизайн логотипу, вибір типографіки, розробка колірної палітри, дизайн меню, 
+                    візитівок, печаток, упаковки на винос та рекламних матеріалів.
+                    
+                    Логотип поєднує класичну елегантність з сучасним мінімалізмом. Застосована типографіка читабельна та дружня, 
+                    а колірна палітра - теплі коричневі та бежеві тони - нагадує про каву та затишну атмосферу кав'ярні.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Additional modals for other projects... -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>
+                <span class="lang-content active">Festiwal Muzyczny - Plakat Promocyjny</span>
+                <span class="lang-content">Music Festival - Promotional Poster</span>
+                <span class="lang-content">Музичний Фестиваль - Рекламний Постер</span>
+            </h2>
+            <p>
+                <span class="lang-content active">
+                    Projekt plakatu dla letniego festiwalu muzycznego miał za zadanie przekazać energię i emocje związane z tym wydarzeniem. 
+                    Wykorzystano dynamiczną kompozycję, żywe kolory i nowoczesną typografię.
+                </span>
+                <span class="lang-content">
+                    The poster design for the summer music festival was meant to convey the energy and emotions associated with this event. 
+                    Dynamic composition, vibrant colors and modern typography were used.
+                </span>
+                <span class="lang-content">
+                    Дизайн постера для літнього музичного фестивалю мав передати енергію та емоції, пов'язані з цією подією. 
+                    Використано динамічну композицію, яскраві кольори та сучасну типографіку.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>
+                <span class="lang-content active">Portfolio Fotografa - Strona Internetowa</span>
+                <span class="lang-content">Photographer Portfolio - Website</span>
+                <span class="lang-content">Портфоліо Фотографа - Веб-сайт</span>
+            </h2>
+            <p>
+                <span class="lang-content active">
+                    Minimalistyczna strona internetowa zaprojektowana z myślą o eksponowaniu fotografii. 
+                    Projekt charakteryzuje się czystym układem, intuicyjną nawigacją i responsywnym designem.
+                </span>
+                <span class="lang-content">
+                    Minimalist website designed to showcase photography. 
+                    The design features clean layout, intuitive navigation and responsive design.
+                </span>
+                <span class="lang-content">
+                    Мінімалістичний веб-сайт, розроблений для демонстрації фотографій. 
+                    Дизайн характеризується чистим макетом, інтуїтивною навігацією та адаптивним дизайном.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>
+                <span class="lang-content active">GreenLife - Logo Organiczne</span>
+                <span class="lang-content">GreenLife - Organic Logo</span>
+                <span class="lang-content">GreenLife - Органічний Логотип</span>
+            </h2>
+            <p>
+                <span class="lang-content active">
+                    Logo dla marki produktów ekologicznych łą
