@@ -1,0 +1,16 @@
+{
+  "menu_about": "Про мене",
+  "menu_portfolio": "Портфоліо",
+  "menu_experience": "Досвід",
+  "menu_education": "Освіта",
+  "menu_contact": "Контакти",
+  "portfolio_title": "Мої проєкти",
+  "experience_title": "Професійний досвід",
+  "education_title": "Освіта",
+  "contact_title": "Звʼязок зі мною",
+  "contact_form_title": "Форма зворотного звʼязку",
+  "form_name": "Імʼя:",
+  "form_email": "Email:",
+  "form_message": "Повідомлення:",
+  "form_send": "Надіслати"
+}

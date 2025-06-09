@@ -1,0 +1,16 @@
+{
+  "menu_about": "About me",
+  "menu_portfolio": "Portfolio",
+  "menu_experience": "Experience",
+  "menu_education": "Education",
+  "menu_contact": "Contact",
+  "portfolio_title": "My Projects",
+  "experience_title": "Work Experience",
+  "education_title": "Education",
+  "contact_title": "Contact Me",
+  "contact_form_title": "Contact Form",
+  "form_name": "Name:",
+  "form_email": "Email:",
+  "form_message": "Message:",
+  "form_send": "Send"
+}
