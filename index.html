@@ -1,40 +1,440 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="light">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Sofiia Vorona</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <script defer src="js/theme-toggle.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Projektant Graficzny</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">  
+
+  
 </head>
 <body>
-  <header>
-    <nav class="main-nav">
-      <a href="index.html">O mnie</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="experience.html">Doświadczenie</a>
-      <a href="education.html">Edukacja</a>
-      <a href="contact.html">Kontakt</a>
-      <button id="themeToggle" aria-label="Przełącz motyw">🌓</button>
-    </nav>
-  </header>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('pl')">PL</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="switchLanguage('ua')">UA</button>
+    </div>
 
-  <main>
-    <section class="intro">
-      <h1>Sofiia Vorona</h1>
-      <p>Grafik, ilustratorka i projektantka multimedialna z doświadczeniem w tworzeniu logo, identyfikacji wizualnej, animacji i projektów UX/UI. Studentka Collegium Da Vinci, 3. rok, specjalizacja: grafika multimedialna.</p>
-      <ul>
-        <li>Adobe Photoshop, Illustrator, InDesign, Figma, Canva</li>
-        <li>Logo, plakaty, identyfikacja wizualna, projekty stron w Figma</li>
-        <li>Animacja 2D, edycja zdjęć, projektowanie na torby i odzież</li>
-        <li>Języki: 🇵🇱 PL (B2), 🇺🇸 EN (B1), 🇺🇦 UA (C2)</li>
-      </ul>
-    </section>
-  </main>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="profile-image">
+                <i class="fas fa-palette"></i>
+            </div>
+            
+            <!-- Polish Content -->
+            <div class="lang-content active" id="header-pl">
+                <h1>Sophiia Vorona</h1>
+                <p class="subtitle">Student Projektowania Graficznego</p>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Studiuję w Polsce</span>
+                </div>
+            </div>
 
-  <footer>
-    <p>&copy; 2025 Sofiia Vorona. Wszelkie prawa zastrzeżone.</p>
-  </footer>
+            <!-- English Content -->
+            <div class="lang-content" id="header-en">
+                <h1>Sophiia Vorona</h1>
+                <p class="subtitle">Graphic Design Student</p>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Studying in Poland</span>
+                </div>
+            </div>
+
+            <!-- Ukrainian Content -->
+            <div class="lang-content" id="header-ua">
+                <h1>Софія Ворона</h1>
+                <p class="subtitle">Студент Графічного Дизайну</p>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Навчаюся в Польщі</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <!-- Polish Nav -->
+            <div class="lang-content active" id="nav-pl">
+                <a href="#about"><i class="fas fa-user"></i> O mnie</a>
+                <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+                <a href="#skills"><i class="fas fa-tools"></i> Umiejętności</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i> Edukacja</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a>
+            </div>
+
+            <!-- English Nav -->
+            <div class="lang-content" id="nav-en">
+                <a href="#about"><i class="fas fa-user"></i> About</a>
+                <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+                <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+
+            <!-- Ukrainian Nav -->
+            <div class="lang-content" id="nav-ua">
+                <a href="#about"><i class="fas fa-user"></i> Про мене</a>
+                <a href="#portfolio"><i class="fas fa-briefcase"></i> Портфоліо</a>
+                <a href="#skills"><i class="fas fa-tools"></i> Навички</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i> Освіта</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Контакт</a>
+            </div>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <!-- Polish About -->
+            <div class="lang-content active" id="about-pl">
+                <h2>O mnie</h2>
+                <p>Jestem studentem projektowania graficznego w Polsce, pasjonatem kreatywności i innowacyjnych rozwiązań wizualnych. Rozwijam swoje umiejętności w różnych dziedzinach designu, od projektowania logo po kompleksową identyfikację wizualną.</p>
+                <p>Moim celem jest tworzenie projektów, które nie tylko wyglądają dobrze, ale także skutecznie komunikują zamierzone przesłanie. Ciągle uczę się nowych technik i narzędzi, aby być na bieżąco z najnowszymi trendami w branży.</p>
+            </div>
+
+            <!-- English About -->
+            <div class="lang-content" id="about-en">
+                <h2>About Me</h2>
+                <p>I'm a graphic design student in Poland, passionate about creativity and innovative visual solutions. I'm developing my skills in various design fields, from logo design to comprehensive visual identity.</p>
+                <p>My goal is to create projects that not only look good but also effectively communicate the intended message. I'm constantly learning new techniques and tools to stay current with the latest industry trends.</p>
+            </div>
+
+            <!-- Ukrainian About -->
+            <div class="lang-content" id="about-ua">
+                <h2>Про мене</h2>
+                <p>Я студент графічного дизайну в Польщі, захоплений креативністю та інноваційними візуальними рішеннями. Розвиваю свої навички в різних галузях дизайну, від створення логотипів до комплексної візуальної ідентичності.</p>
+                <p>Моя мета - створювати проекти, які не лише добре виглядають, але й ефективно передають задумане повідомлення. Постійно вивчаю нові техніки та інструменти, щоб бути в курсі останніх трендів у галузі.</p>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <!-- Polish Portfolio -->
+            <div class="lang-content active" id="portfolio-pl">
+                <h2>Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Projekt Logo</h3>
+                            <p>Nowoczesny design logo dla lokalnej firmy, łączący minimalizm z unikalnym charakterem marki.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Plakat Reklamowy</h3>
+                            <p>Kreatywny plakat promujący wydarzenie kulturalne, wykorzystujący jasne kolory i czytelną typografię.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Design Aplikacji</h3>
+                            <p>Interfejs użytkownika dla aplikacji mobilnej, skupiający się na intuicyjnej nawigacji i estetyce.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Portfolio -->
+            <div class="lang-content" id="portfolio-en">
+                <h2>Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Logo Design</h3>
+                            <p>Modern logo design for a local company, combining minimalism with unique brand character.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Advertising Poster</h3>
+                            <p>Creative poster promoting a cultural event, using bright colors and clear typography.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>App Design</h3>
+                            <p>User interface for a mobile application, focusing on intuitive navigation and aesthetics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ukrainian Portfolio -->
+            <div class="lang-content" id="portfolio-ua">
+                <h2>Портфоліо</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Дизайн Логотипу</h3>
+                            <p>Сучасний дизайн логотипу для місцевої компанії, що поєднує мінімалізм з унікальним характером бренду.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Рекламний Постер</h3>
+                            <p>Креативний постер для промоції культурного заходу, використовуючи яскраві кольори та зрозумілу типографіку.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Дизайн Додатку</h3>
+                            <p>Інтерфейс користувача для мобільного додатку, зосереджений на інтуїтивній навігації та естетиці.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <!-- Polish Skills -->
+            <div class="lang-content active" id="skills-pl">
+                <h2>Umiejętności</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <i class="fas fa-pen-nib"></i>
+                        <h3>Design</h3>
+                        <ul class="skill-list">
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Adobe InDesign</li>
+                            <li>Figma</li>
+                            <li>Canva</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-palette"></i>
+                        <h3>Specjalizacje</h3>
+                        <ul class="skill-list">
+                            <li>Projektowanie logo</li>
+                            <li>Identyfikacja wizualna</li>
+                            <li>Plakaty i ulotki</li>
+                            <li>Web design</li>
+                            <li>UX/UI design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-code"></i>
+                        <h3>Techniczne</h3>
+                        <ul class="skill-list">
+                            <li>HTML/CSS</li>
+                            <li>JavaScript (podstawy)</li>
+                            <li>WordPress</li>
+                            <li>Fotografia cyfrowa</li>
+                            <li>Obróbka zdjęć</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Skills -->
+            <div class="lang-content" id="skills-en">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <i class="fas fa-pen-nib"></i>
+                        <h3>Design</h3>
+                        <ul class="skill-list">
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Adobe InDesign</li>
+                            <li>Figma</li>
+                            <li>Canva</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-palette"></i>
+                        <h3>Specializations</h3>
+                        <ul class="skill-list">
+                            <li>Logo design</li>
+                            <li>Visual identity</li>
+                            <li>Posters & flyers</li>
+                            <li>Web design</li>
+                            <li>UX/UI design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-code"></i>
+                        <h3>Technical</h3>
+                        <ul class="skill-list">
+                            <li>HTML/CSS</li>
+                            <li>JavaScript (basics)</li>
+                            <li>WordPress</li>
+                            <li>Digital photography</li>
+                            <li>Photo editing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ukrainian Skills -->
+            <div class="lang-content" id="skills-ua">
+                <h2>Навички</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <i class="fas fa-pen-nib"></i>
+                        <h3>Дизайн</h3>
+                        <ul class="skill-list">
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Adobe InDesign</li>
+                            <li>Figma</li>
+                            <li>Canva</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-palette"></i>
+                        <h3>Спеціалізації</h3>
+                        <ul class="skill-list">
+                            <li>Дизайн логотипів</li>
+                            <li>Візуальна ідентичність</li>
+                            <li>Постери та листівки</li>
+                            <li>Веб-дизайн</li>
+                            <li>UX/UI дизайн</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <i class="fas fa-code"></i>
+                        <h3>Технічні</h3>
+                        <ul class="skill-list">
+                            <li>HTML/CSS</li>
+                            <li>JavaScript (основи)</li>
+                            <li>WordPress</li>
+                            <li>Цифрова фотографія</li>
+                            <li>Обробка фото</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <!-- Polish Education -->
+            <div class="lang-content active" id="education-pl">
+                <h2>Edukacja</h2>
+                <div class="education-item">
+                    <h3>Licencjat - Projektowanie Graficzne</h3>
+                    <div class="university">Uniwersytet w Polsce</div>
+                    <div class="year">2023 - obecnie</div>
+                    <p>Kompleksowe studia obejmujące teorię designu, typografię, kompozycję, projekty multimedialne oraz współczesne narzędzia graficzne.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Kursy Online</h3>
+                    <div class="university">Różne platformy edukacyjne</div>
+                    <div class="year">2022 - obecnie</div>
+                    <p>Dodatkowe szkolenia z Adobe Creative Suite, UX/UI design, fotografia cyfrowa i marketing wizualny.</p>
+                </div>
+            </div>
+
+            <!-- English Education -->
+            <div class="lang-content" id="education-en">
+    <h2>Education</h2>
+    <div class="education-item">
+        <h3>Bachelor’s Degree – Graphic Design</h3>
+        <div class="university">University in Poland</div>
+        <div class="year">2023 – Present</div>
+        <p>Comprehensive studies including design theory, typography, composition, multimedia projects, and modern graphic tools.</p>
+    </div>
+    <div class="education-item">
+        <h3>Online Courses</h3>
+        <div class="university">Various Educational Platforms</div>
+        <div class="year">2022 – Present</div>
+        <p>Additional training in Adobe Creative Suite, UX/UI design, digital photography, and visual marketing.</p>
+    </div>
+</div>
+            <!-- Ukrainian Education -->
+<div class="lang-content" id="education-ua">
+    <h2>Освіта</h2>
+    <div class="education-item">
+        <h3>Бакалавр – Графічний дизайн</h3>
+        <div class="university">Університет у Польщі</div>
+        <div class="year">2023 – дотепер</div>
+        <p>Комплексне навчання, що охоплює теорію дизайну, типографіку, композицію, мультимедійні проєкти та сучасні графічні інструменти.</p>
+    </div>
+    <div class="education-item">
+        <h3>Онлайн-курси</h3>
+        <div class="university">Різні освітні платформи</div>
+        <div class="year">2022 – дотепер</div>
+        <p>Додаткове навчання Adobe Creative Suite, UX/UI-дизайну, цифрової фотографії та візуального маркетингу.</p>
+    </div>
+</div>
+
+            </section>
+
+<!-- Footer -->
+<footer>
+    <div class="social-links">
+        <a href="#"><i class="fab fa-behance"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 Twoje Imię. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+</div> <!-- end .container -->
+
+<!-- Language Switch Script -->
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+
+        document.querySelectorAll('.lang-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        document.querySelectorAll(`[id$="-${lang}"]`).forEach(el => {
+            el.classList.add('active');
+        });
+    }
+
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
 </body>
 </html>
