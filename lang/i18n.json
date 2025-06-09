@@ -1,0 +1,15 @@
+{
+  "pl": {
+    "nav_about": "O mnie",
+    "nav_portfolio": "Portfolio",
+    "nav_experience": "Doświadczenie",
+    "nav_education": "Edukacja",
+    "nav_contact": "Kontakt",
+    "portfolio_heading": "Portfolio",
+    "portfolio_intro": "Moje wybrane prace:",
+    "contact_heading": "Kontakt",
+    "contact_email": "Email:",
+    "contact_phone": "Telefon:",
+    "contact_instagram": "Instagram:"
+  }
+}

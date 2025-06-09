@@ -1,0 +1,6 @@
+body { font-family: Arial; margin:0; padding:0; }
+nav { background:#fca5a5; padding:1rem; display:flex; gap:1rem; }
+nav a { color:white; font-weight:bold; text-decoration:none; }
+footer { background:#fca5a5; color:white; text-align:center; padding:1rem; }
+.theme-toggle { position:fixed; top:1rem; right:1rem; border:none; font-size:1.5rem; }
+body.dark { background:#1e1e1e; color:#fefefe; }
