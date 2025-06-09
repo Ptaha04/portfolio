@@ -1,17 +1,106 @@
-<!DOCTYPE html><html><head>
+<!-- portfolio.html — Сторінка з підрозділами робіт -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio – Sofiia Vorona</title>
-  <meta name="description" content="Zobacz projekty graficzne, ilustracje, animacje i strony Figma autorstwa Sofii Vorony.">
-  <meta name="keywords" content="grafika, portfolio, ilustracje, projektowanie, Sofiia Vorona">
-  <meta name="author" content="Sofiia Vorona">
-  <meta property="og:title" content="Portfolio – Sofiia Vorona">
-  <meta property="og:description" content="Zobacz projekty graficzne, ilustracje, animacje i strony Figma autorstwa Sofii Vorony.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sofia-vorona-portfolio.com/portfolio">
-  <meta property="og:image" content="https://sofia-vorona-portfolio.com/img/preview.jpg">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/language.js"></script>
+  <script defer src="js/carousel.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-i18n="menu_about">O mnie</a></li>
+        <li><a href="portfolio.html" data-i18n="menu_portfolio" class="active">Portfolio</a></li>
+        <li><a href="experience.html" data-i18n="menu_experience">Doświadczenie</a></li>
+        <li><a href="education.html" data-i18n="menu_education">Edukacja</a></li>
+        <li><a href="contact.html" data-i18n="menu_contact">Kontakt</a></li>
+      </ul>
+      <label for="langSwitcher">Wybierz język:</label>
+      <select id="langSwitcher">
+        <option value="pl">PL</option>
+        <option value="en">EN</option>
+        <option value="ua">UA</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <h1 data-i18n="portfolio_title">Moje projekty</h1>
+    <nav class="portfolio-tabs">
+      <button data-category="oil" class="tab-button" data-i18n="tab_oil">Malarstwo olejne</button>
+      <button data-category="pencil" class="tab-button" data-i18n="tab_pencil">Rysunki ołówkiem</button>
+      <button data-category="digital" class="tab-button" data-i18n="tab_digital">Dzieła cyfrowe</button>
+      <button data-category="photo" class="tab-button" data-i18n="tab_photo">Fotografia</button>
+      <button data-category="animation" class="tab-button" data-i18n="tab_animation">Animacje</button>
+      <button data-category="3d" class="tab-button" data-i18n="tab_3d">3D</button>
+      <button data-category="figma" class="tab-button" data-i18n="tab_figma">Strony Figma</button>
+      <button data-category="video" class="tab-button" data-i18n="tab_video">Wideo</button>
+    </nav>
+
+    <section class="portfolio-gallery">
+      <div class="carousel" id="portfolio-carousel">
+        <div class="carousel-track">
+          <!-- Динамічно додаються картинки за категорією -->
+        </div>
+        <button class="carousel-btn prev">&#10094;</button>
+        <button class="carousel-btn next">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="figma-prototypes">
+      <h2>Figma projekty</h2>
+      <ul>
+        <li><a href="https://www.figma.com/proto/Xj7LKaRppAtP9q2rstJFhX?node-id=0-1&t=4ffKg3pXz11twWHa-6" target="_blank">Projekt 1</a></li>
+        <li><a href="https://www.figma.com/proto/fOjjnJ0kX0maKgEvkjP2N4?node-id=0-1&t=4ffKg3pXz11twWHa-6" target="_blank">Projekt 2</a></li>
+        <li><a href="https://www.figma.com/proto/z1MB672YoVjIohuvOARc3l/auto-layout--Copy-?node-id=2012-153&t=SSHFPTuCZLjrmpaK-1" target="_blank">Projekt 3</a></li>
+        <li><a href="https://www.figma.com/proto/z1MB672YoVjIohuvOARc3l/auto-layout--Copy-?node-id=225-1588&t=BOWJ3ovII0C0bwoA-1" target="_blank">Projekt 4</a></li>
+        <li><a href="https://www.figma.com/proto/z1MB672YoVjIohuvOARc3l/auto-layout--Copy-?node-id=2004-109&t=V0pygIqdd9MtpL5O-1" target="_blank">Projekt 5</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sofiia Vorona</p>
+  </footer>
+
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script></head><body>portfolio.html</body></html>
+    const categories = {
+      oil: ["/mnt/data/photo_2025-06-09_15-24-24.jpg"],
+      pencil: ["/mnt/data/photo_2025-06-09_15-24-33.jpg"],
+      digital: [
+        "/mnt/data/photo_2025-06-09_15-24-37.jpg",
+        "/mnt/data/photo_2025-06-09_15-24-42.mp4",
+        "/mnt/data/photo_2025-06-09_15-24-53.jpg"
+      ],
+      photo: ["/mnt/data/photo_2025-06-09_15-24-48.jpg"],
+      animation: ["/mnt/data/photo_2025-06-09_15-24-57.jpg"],
+      "3d": ["/mnt/data/photo_2025-06-09_15-25-03.jpg"],
+      figma: [],
+      video: ["/mnt/data/video_2025-06-09_15-23-40.mp4"]
+    };
+
+    const track = document.querySelector(".carousel-track");
+    const buttons = document.querySelectorAll(".tab-button");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const category = btn.dataset.category;
+        track.innerHTML = "";
+        categories[category].forEach(src => {
+          const element = document.createElement(src.endsWith('.mp4') ? "video" : "img");
+          element.src = src;
+          element.onclick = () => element.requestFullscreen();
+          if (element.tagName === "VIDEO") {
+            element.controls = true;
+          }
+          track.appendChild(element);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
