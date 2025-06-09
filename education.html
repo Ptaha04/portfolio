@@ -112,4 +112,28 @@
     <script src="js/load-footer.js"></script>
 
   </body>
+   <script>
+        
+        
+        // Current language
+        let currentLang = 'pl';
+        
+        // Current slide index
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        // Language switching functionality
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Hide all language content
+            const allLangContent = document.querySelectorAll('.lang-content');
+            allLangContent.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show content for selected language
+            const selectedLangContent = document.querySelector
+
+            </script>
 </html>
