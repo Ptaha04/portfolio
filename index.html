@@ -1,819 +1,90 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Projektant Graficzny</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Language Switcher */
-        .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            margin: 0 2px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .lang-btn.active {
-            background: rgba(255, 255, 255, 0.3);
-            font-weight: bold;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 3rem;
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.3rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .location {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Sections */
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section h2 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .portfolio-item {
-            background: #f8f9fa;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .portfolio-item:hover .portfolio-image::before {
-            opacity: 1;
-        }
-
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-
-        .portfolio-content h3 {
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-size: 1.3rem;
-        }
-
-        .portfolio-content p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .skill-category h3 {
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .skill-list {
-            list-style: none;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .skill-list li {
-            margin: 0.3rem 0;
-        }
-
-        /* Education */
-        .education-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            border-left: 4px solid #667eea;
-        }
-
-        .education-item h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-item .university {
-            color: #667eea;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-
-        .education-item .year {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 3rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Language content visibility */
-        .lang-content {
-            display: none;
-        }
-
-        .lang-content.active {
-            display: block;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            .language-switcher {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin-bottom: 1rem;
-                text-align: center;
-            }
-
-            header {
-                padding: 2rem 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+  <title>Sofiia Vorona – Portfolio</title>
+  <meta name="description" content="Oficjalne portfolio graficzki Sofii Vorony: projekty, ilustracje, branding.">
+  <meta name="keywords" content="grafika, portfolio, ilustracje, projektowanie, Sofiia Vorona">
+  <meta name="author" content="Sofiia Vorona">
+  <meta property="og:title" content="Sofiia Vorona – Portfolio">
+  <meta property="og:description" content="Oficjalne portfolio graficzki Sofii Vorony: projekty, ilustracje, branding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sofia-vorona-portfolio.com">
+  <meta property="og:image" content="https://sofia-vorona-portfolio.com/img/preview.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  <title>Sofiia Vorona – Portfolio</title>
+  <meta name="description" content="Oficjalne portfolio graficzki Sofii Vorony: projekty, ilustracje, branding.">
+  <meta name="keywords" content="grafika, portfolio, ilustracje, projektowanie, Sofiia Vorona">
+  <meta name="author" content="Sofiia Vorona">
+  <meta property="og:title" content="Sofiia Vorona – Portfolio">
+  <meta property="og:description" content="Oficjalne portfolio graficzki Sofii Vorony: projekty, ilustracje, branding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sofia-vorona-portfolio.com">
+  <meta property="og:image" content="https://sofia-vorona-portfolio.com/img/preview.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sofiia Vorona – Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/language.js"></script>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="lang-btn active" onclick="switchLanguage('pl')">PL</button>
-        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="switchLanguage('ua')">UA</button>
-    </div>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-i18n="menu_about">O mnie</a></li>
+        <li><a href="portfolio.html" data-i18n="menu_portfolio">Portfolio</a></li>
+        <li><a href="experience.html" data-i18n="menu_experience">Doświadczenie</a></li>
+        <li><a href="education.html" data-i18n="menu_education">Edukacja</a></li>
+        <li><a href="contact.html" data-i18n="menu_contact">Kontakt</a></li>
+      </ul>
+      <label for="langSwitcher">Wybierz język:</label>
+      <select id="langSwitcher">
+        <option value="pl">PL</option>
+        <option value="en">EN</option>
+        <option value="ua">UA</option>
+      </select>
+    </nav>
+  </header>
 
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="profile-image">
-                <i class="fas fa-palette"></i>
-            </div>
-            
-            <!-- Polish Content -->
-            <div class="lang-content active" id="header-pl">
-                <h1>Twoje Imię</h1>
-                <p class="subtitle">Student Projektowania Graficznego</p>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Studiuję w Polsce</span>
-                </div>
-            </div>
+  <main>
+    <section class="hero">
+      <h1 data-i18n="welcome">Witaj na moim portfolio!</h1>
+      <p data-i18n="intro">Jestem Sofiia Vorona, studentka grafiki na Collegium Da Vinci. Specjalizuję się w ilustracjach, animacji i projektowaniu graficznym.</p>
+    </section>
+    <section class="about">
+      <h2 data-i18n="bio_title">Kim jestem?</h2>
+      <p data-i18n="bio_text_1">Jestem studentką 3. roku grafiki i tworzę nowoczesne projekty w takich programach jak Figma, Photoshop, Illustrator, InDesign czy Lightroom.</p>
+      <p data-i18n="bio_text_2">Łączę klasyczne techniki malarskie, takie jak malarstwo olejne i szkice ołówkiem, z cyfrowym designem. Tworzę identyfikacje wizualne, ilustracje i animacje.</p>
+      <p data-i18n="bio_text_3">Pasjonuję się fotografią artystyczną i brandingiem. Dbam o estetykę i detale w każdym projekcie, który realizuję z myślą o potrzebach klienta.</p>
+    </section>
+    <section class="gallery">
+      <h2 data-i18n="featured_works">Wybrane prace</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="img/sample1.jpg" alt="Projekt 1">
+          <img src="img/sample2.jpg" alt="Projekt 2">
+          <img src="img/sample3.jpg" alt="Projekt 3">
+        </div>
+        <button class="carousel-btn prev">&#10094;</button>
+        <button class="carousel-btn next">&#10095;</button>
+      </div>
+    </section>
+  </main>
 
-            <!-- English Content -->
-            <div class="lang-content" id="header-en">
-                <h1>Your Name</h1>
-                <p class="subtitle">Graphic Design Student</p>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Studying in Poland</span>
-                </div>
-            </div>
-
-            <!-- Ukrainian Content -->
-            <div class="lang-content" id="header-ua">
-                <h1>Твоє Ім'я</h1>
-                <p class="subtitle">Студент Графічного Дизайну</p>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Навчаюся в Польщі</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Navigation -->
-        <nav class="nav">
-            <!-- Polish Nav -->
-            <div class="lang-content active" id="nav-pl">
-                <a href="#about"><i class="fas fa-user"></i> O mnie</a>
-                <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
-                <a href="#skills"><i class="fas fa-tools"></i> Umiejętności</a>
-                <a href="#education"><i class="fas fa-graduation-cap"></i> Edukacja</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a>
-            </div>
-
-            <!-- English Nav -->
-            <div class="lang-content" id="nav-en">
-                <a href="#about"><i class="fas fa-user"></i> About</a>
-                <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
-                <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
-                <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-            </div>
-
-            <!-- Ukrainian Nav -->
-            <div class="lang-content" id="nav-ua">
-                <a href="#about"><i class="fas fa-user"></i> Про мене</a>
-                <a href="#portfolio"><i class="fas fa-briefcase"></i> Портфоліо</a>
-                <a href="#skills"><i class="fas fa-tools"></i> Навички</a>
-                <a href="#education"><i class="fas fa-graduation-cap"></i> Освіта</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> Контакт</a>
-            </div>
-        </nav>
-
-        <!-- About Section -->
-        <section id="about" class="section">
-            <!-- Polish About -->
-            <div class="lang-content active" id="about-pl">
-                <h2>O mnie</h2>
-                <p>Jestem studentem projektowania graficznego w Polsce, pasjonatem kreatywności i innowacyjnych rozwiązań wizualnych. Rozwijam swoje umiejętności w różnych dziedzinach designu, od projektowania logo po kompleksową identyfikację wizualną.</p>
-                <p>Moim celem jest tworzenie projektów, które nie tylko wyglądają dobrze, ale także skutecznie komunikują zamierzone przesłanie. Ciągle uczę się nowych technik i narzędzi, aby być na bieżąco z najnowszymi trendami w branży.</p>
-            </div>
-
-            <!-- English About -->
-            <div class="lang-content" id="about-en">
-                <h2>About Me</h2>
-                <p>I'm a graphic design student in Poland, passionate about creativity and innovative visual solutions. I'm developing my skills in various design fields, from logo design to comprehensive visual identity.</p>
-                <p>My goal is to create projects that not only look good but also effectively communicate the intended message. I'm constantly learning new techniques and tools to stay current with the latest industry trends.</p>
-            </div>
-
-            <!-- Ukrainian About -->
-            <div class="lang-content" id="about-ua">
-                <h2>Про мене</h2>
-                <p>Я студент графічного дизайну в Польщі, захоплений креативністю та інноваційними візуальними рішеннями. Розвиваю свої навички в різних галузях дизайну, від створення логотипів до комплексної візуальної ідентичності.</p>
-                <p>Моя мета - створювати проекти, які не лише добре виглядають, але й ефективно передають задумане повідомлення. Постійно вивчаю нові техніки та інструменти, щоб бути в курсі останніх трендів у галузі.</p>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="section">
-            <!-- Polish Portfolio -->
-            <div class="lang-content active" id="portfolio-pl">
-                <h2>Portfolio</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Projekt Logo</h3>
-                            <p>Nowoczesny design logo dla lokalnej firmy, łączący minimalizm z unikalnym charakterem marki.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Plakat Reklamowy</h3>
-                            <p>Kreatywny plakat promujący wydarzenie kulturalne, wykorzystujący jasne kolory i czytelną typografię.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Design Aplikacji</h3>
-                            <p>Interfejs użytkownika dla aplikacji mobilnej, skupiający się na intuicyjnej nawigacji i estetyce.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- English Portfolio -->
-            <div class="lang-content" id="portfolio-en">
-                <h2>Portfolio</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Logo Design</h3>
-                            <p>Modern logo design for a local company, combining minimalism with unique brand character.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Advertising Poster</h3>
-                            <p>Creative poster promoting a cultural event, using bright colors and clear typography.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>App Design</h3>
-                            <p>User interface for a mobile application, focusing on intuitive navigation and aesthetics.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ukrainian Portfolio -->
-            <div class="lang-content" id="portfolio-ua">
-                <h2>Портфоліо</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Дизайн Логотипу</h3>
-                            <p>Сучасний дизайн логотипу для місцевої компанії, що поєднує мінімалізм з унікальним характером бренду.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Рекламний Постер</h3>
-                            <p>Креативний постер для промоції культурного заходу, використовуючи яскраві кольори та зрозумілу типографіку.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Дизайн Додатку</h3>
-                            <p>Інтерфейс користувача для мобільного додатку, зосереджений на інтуїтивній навігації та естетиці.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <!-- Polish Skills -->
-            <div class="lang-content active" id="skills-pl">
-                <h2>Umiejętności</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <i class="fas fa-pen-nib"></i>
-                        <h3>Design</h3>
-                        <ul class="skill-list">
-                            <li>Adobe Photoshop</li>
-                            <li>Adobe Illustrator</li>
-                            <li>Adobe InDesign</li>
-                            <li>Figma</li>
-                            <li>Canva</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <i class="fas fa-palette"></i>
-                        <h3>Specjalizacje</h3>
-                        <ul class="skill-list">
-                            <li>Projektowanie logo</li>
-                            <li>Identyfikacja wizualna</li>
-                            <li>Plakaty i ulotki</li>
-                            <li>Web design</li>
-                            <li>UX/UI design</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <i class="fas fa-code"></i>
-                        <h3>Techniczne</h3>
-                        <ul class="skill-list">
-                            <li>HTML/CSS</li>
-                            <li>JavaScript (podstawy)</li>
-                            <li>WordPress</li>
-                            <li>Fotografia cyfrowa</li>
-                            <li>Obróbka zdjęć</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- English Skills -->
-            <div class="lang-content" id="skills-en">
-                <h2>Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <i class="fas fa-pen-nib"></i>
-                        <h3>Design</h3>
-                        <ul class="skill-list">
-                            <li>Adobe Photoshop</li>
-                            <li>Adobe Illustrator</li>
-                            <li>Adobe InDesign</li>
-                            <li>Figma</li>
-                            <li>Canva</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <i class="fas fa-palette"></i>
-                        <h3>Specializations</h3>
-                        <ul class="skill-list">
-                            <li>Logo design</li>
-                            <li>Visual identity</li>
-                            <li>Posters & flyers</li>
-                            <li>Web design</li>
-                            <li>UX/UI design</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <i class="fas fa-code"></i>
-                        <h3>Technical</h3>
-                        <ul class="skill-list">
-                            <li>HTML/CSS</li>
-                            <li>JavaScript (basics)</li>
-                            <li>WordPress</li>
-                            <li>Digital photography</li>
-                            <li>Photo editing</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ukrainian Skills -->
-            <div class="lang-content" id="skills-ua">
-                <h2>Навички</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <i class="fas fa-pen-nib"></i>
-                        <h3>Дизайн</h3>
-                        <ul class="skill-list">
-                            <li>Adobe Photoshop</li>
-                            <li>Adobe Illustrator</li>
-                            <li>Adobe InDesign</li>
-                            <li>Figma</li>
-                            <li>Canva</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <i class="fas fa-palette"></i>
-                        <h3>Спеціалізації</h3>
-                        <ul class="skill-list">
-                            <li>Дизайн логотипів</li>
-                            <li>Візуальна ідентичність</li>
-                            <li>Постери та листівки</li>
-                            <li>Веб-дизайн</li>
-                            <li>UX/UI дизайн</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <i class="fas fa-code"></i>
-                        <h3>Технічні</h3>
-                        <ul class="skill-list">
-                            <li>HTML/CSS</li>
-                            <li>JavaScript (основи)</li>
-                            <li>WordPress</li>
-                            <li>Цифрова фотографія</li>
-                            <li>Обробка фото</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="section">
-            <!-- Polish Education -->
-            <div class="lang-content active" id="education-pl">
-                <h2>Edukacja</h2>
-                <div class="education-item">
-                    <h3>Licencjat - Projektowanie Graficzne</h3>
-                    <div class="university">Uniwersytet w Polsce</div>
-                    <div class="year">2023 - obecnie</div>
-                    <p>Kompleksowe studia obejmujące teorię designu, typografię, kompozycję, projekty multimedialne oraz współczesne narzędzia graficzne.</p>
-                </div>
-                <div class="education-item">
-                    <h3>Kursy Online</h3>
-                    <div class="university">Różne platformy edukacyjne</div>
-                    <div class="year">2022 - obecnie</div>
-                    <p>Dodatkowe szkolenia z Adobe Creative Suite, UX/UI design, fotografia cyfrowa i marketing wizualny.</p>
-                </div>
-            </div>
-
-            <!-- English Education -->
-            <div class="
+  <footer>
+    <p>&copy; 2025 Sofiia Vorona</p>
+  </footer>
+</body>
+</html>
