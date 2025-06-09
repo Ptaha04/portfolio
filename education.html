@@ -1,1 +1,201 @@
-<!DOCTYPE html><html lang='pl'><head><meta charset='UTF-8'><title>Edukacja</title><link rel='stylesheet' href='css/style.css'></head><body><nav><a href='index.html' data-i18n='nav_about'>O mnie</a><a href='portfolio.html' data-i18n='nav_portfolio'>Portfolio</a><a href='experience.html' data-i18n='nav_experience'>Doświadczenie</a><a href='education.html' data-i18n='nav_education'>Edukacja</a><a href='contact.html' data-i18n='nav_contact'>Kontakt</a><select id='languageSwitcher'><option value='pl'>PL</option><option value='en'>EN</option><option value='ua'>UA</option></select><button class='theme-toggle'>🌓</button></nav><main><h1 data-i18n='nav_education'>Edukacja</h1></main><footer>© 2025</footer><script src='js/lang.js'></script></body></html>
+<!DOCTYPE html>
+<html lang='pl'>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Edukacja</title>
+    <link rel='stylesheet' href='css/style.css'>
+  </head>
+  <body>
+    <nav>
+      <ul class="main-nav" id="mainNav">
+                    <li class="lang-content active" id="nav-home-pl">
+                        <a href="#" onclick="showPage('home')" class="active">
+                            <i class="fas fa-home"></i> Główna
+                        </a>
+                    </li>
+                    <li class="lang-content active" id="nav-about-pl">
+                        <a href="#" onclick="showPage('about')">
+                            <i class="fas fa-user"></i> O mnie
+                        </a>
+                    </li>
+                    <li class="lang-content active" id="nav-portfolio-pl">
+                        <a href="#" onclick="showPage('portfolio')">
+                            <i class="fas fa-briefcase"></i> Portfolio
+                        </a>
+                    </li>
+                    <li class="lang-content active" id="nav-skills-pl">
+                        <a href="#" onclick="showPage('skills')">
+                            <i class="fas fa-tools"></i> Umiejętności
+                        </a>
+                    </li>
+                    <li class="lang-content active" id="nav-education-pl">
+                        <a href="#" onclick="showPage('education')">
+                            <i class="fas fa-graduation-cap"></i> Edukacja
+                        </a>
+                    </li>
+                    <li class="lang-content active" id="nav-contact-pl">
+                        <a href="#" onclick="showPage('contact')">
+                            <i class="fas fa-envelope"></i> Kontakt
+                        </a>
+                    </li>
+
+                    <!-- English Navigation -->
+                    <li class="lang-content" id="nav-home-en">
+                        <a href="#" onclick="showPage('home')" class="active">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-about-en">
+                        <a href="#" onclick="showPage('about')">
+                            <i class="fas fa-user"></i> About
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-portfolio-en">
+                        <a href="#" onclick="showPage('portfolio')">
+                            <i class="fas fa-briefcase"></i> Portfolio
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-skills-en">
+                        <a href="#" onclick="showPage('skills')">
+                            <i class="fas fa-tools"></i> Skills
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-education-en">
+                        <a href="#" onclick="showPage('education')">
+                            <i class="fas fa-graduation-cap"></i> Education
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-contact-en">
+                        <a href="#" onclick="showPage('contact')">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </li>
+
+                    <!-- Ukrainian Navigation -->
+                    <li class="lang-content" id="nav-home-ua">
+                        <a href="#" onclick="showPage('home')" class="active">
+                            <i class="fas fa-home"></i> Головна
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-about-ua">
+                        <a href="#" onclick="showPage('about')">
+                            <i class="fas fa-user"></i> Про мене
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-portfolio-ua">
+                        <a href="#" onclick="showPage('portfolio')">
+                            <i class="fas fa-briefcase"></i> Портфоліо
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-skills-ua">
+                        <a href="#" onclick="showPage('skills')">
+                            <i class="fas fa-tools"></i> Навички
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-education-ua">
+                        <a href="#" onclick="showPage('education')">
+                            <i class="fas fa-graduation-cap"></i> Освіта
+                        </a>
+                    </li>
+                    <li class="lang-content" id="nav-contact-ua">
+                        <a href="#" onclick="showPage('contact')">
+                            <i class="fas fa-envelope"></i> Контакт
+                        </a>
+                    </li>
+                </ul>
+    </nav>
+    
+    <main>
+      <!-- Education Page -->
+        <div id="education" class="page">
+            <div class="section">
+                <h2>
+                    <span class="lang-content active" id="education-title-pl">Edukacja</span>
+                    <span class="lang-content" id="education-title-en">Education</span>
+                    <span class="lang-content" id="education-title-ua">Освіта</span>
+                </h2>
+
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <h3>
+                            <span class="lang-content active">Licencjat - Projektowanie Graficzne</span>
+                            <span class="lang-content">Bachelor's - Graphic Design</span>
+                            <span class="lang-content">Бакалавр - Графічний Дизайн</span>
+                        </h3>
+                        <h4>
+                            <span class="lang-content active">Akademia Sztuk Pięknych w Krakowie</span>
+                            <span class="lang-content">Academy of Fine Arts in Krakow</span>
+                            <span class="lang-content">Академія образотворчих мистецтв у Кракові</span>
+                        </h4>
+                        <p class="education-date">2021 - 2024</p>
+                        <p>
+                            <span class="lang-content active">
+                                Specjalizacja w projektowaniu graficznym z naciskiem na identyfikację wizualną, typografię i design cyfrowy. Praca dyplomowa poświęcona nowoczesnym trendom w brandingu.
+                            </span>
+                            <span class="lang-content">
+                                Specialization in graphic design with emphasis on visual identity, typography and digital design. Thesis devoted to modern trends in branding.
+                            </span>
+                            <span class="lang-content">
+                                Спеціалізація в графічному дизайні з акцентом на візуальну ідентичність, типографіку та цифровий дизайн. Дипломна робота присвячена сучасним трендам у брендингу.
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>
+                            <span class="lang-content active">Kurs Adobe Creative Suite</span>
+                            <span class="lang-content">Adobe Creative Suite Course</span>
+                            <span class="lang-content">Курс Adobe Creative Suite</span>
+                        </h3>
+                        <h4>
+                            <span class="lang-content active">Centrum Edukacji Cyfrowej</span>
+                            <span class="lang-content">Digital Education Center</span>
+                            <span class="lang-content">Центр цифрової освіти</span>
+                        </h4>
+                        <p class="education-date">2020</p>
+                        <p>
+                            <span class="lang-content active">
+                                Intensywny kurs obsługi programów Adobe Photoshop, Illustrator i InDesign. Zdobycie certyfikatu Adobe Certified Associate.
+                            </span>
+                            <span class="lang-content">
+                                Intensive course in Adobe Photoshop, Illustrator and InDesign. Obtaining Adobe Certified Associate certificate.
+                            </span>
+                            <span class="lang-content">
+                                Інтенсивний курс з використання Adobe Photoshop, Illustrator та InDesign. Отримання сертифікату Adobe Certified Associate.
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>
+                            <span class="lang-content active">Matura - Profil Artystyczny</span>
+                            <span class="lang-content">High School - Art Profile</span>
+                            <span class="lang-content">Атестат - Мистецький Профіль</span>
+                        </h3>
+                        <h4>
+                            <span class="lang-content active">Liceum Sztuk Plastycznych</span>
+                            <span class="lang-content">Fine Arts High School</span>
+                            <span class="lang-content">Ліцей образотворчих мистецтв</span>
+                        </h4>
+                        <p class="education-date">2017 - 2021</p>
+                        <p>
+                            <span class="lang-content active">
+                                Edukacja artystyczna z naciskiem na rysunek, malarstwo i podstawy projektowania graficznego. Udział w licznych konkursach i wystawach szkolnych.
+                            </span>
+                            <span class="lang-content">
+                                Art education with emphasis on drawing, painting and basics of graphicdesign. Participation in numerous competitions and school exhibitions.
+                            </span>
+                            <span class="lang-content">
+                                Мистецька освіта з акцентом на малюнок, живопис та основи графічного дизайну. Участь у численних конкурсах та шкільних виставках.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+   
+    <footer>© 2025</footer>
+    <script src='js/lang.js'></script>
+  </body>
+</html>
